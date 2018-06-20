@@ -6,12 +6,14 @@
 <select [(ngModel)]="filterValue">
   <option value="XEM_TAT_CA">Xem Tất Cả</option>
   <option value="XEM_CHUA_NHO">Xem CHƯA NHỚ</option>
-  <option value="XEM_ĐÃ_NHO">Xem ĐÃ NHỚ</option>
+  <option value="XEM_DA_NHO">Xem ĐÃ NHỚ</option>
 </select>
 
 <button (click)="isShow=true" *ngIf="!isShow">Thêm từ mới</button>
 <div *ngFor="let word of array_words" [ngStyle]="{'background-color':'gray','min-width':'100px'}" > 
-  <h3 [ngStyle]="{color:word.memorized?'red':'green'}" >{{ word.en }}</h3>
-  <p>{{ word.vi }}</p>
-  <button (click)="delete(word.id)">Xóa từ</button>
+  <div *ngIf="filterValue=='XEM_TAT_CA' || (filterValue=='XEM_CHUA_NHO' && !word.memorized) || (filterValue=='XEM_DA_NHO' && word.memorized)">
+    <h3 [ngStyle]="{color:word.memorized?'red':'green'}" >{{ word.en }}</h3>
+    <p>{{ word.vi }}</p>
+    <button (click)="delete(word.id)">Xóa từ</button>
+  </div>
 </div>

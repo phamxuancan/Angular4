@@ -7,6 +7,10 @@ import { BookComponent } from './book/book.component';
 import { UserComponent } from './user/user.component';
 import { StructComponent } from './struct/struct.component';
 import { WordsComponent } from './words/words.component';
+import { PersonComponent } from './person/person.component';
+import { ListpersonComponent } from './listperson/listperson.component';
+import { ParentComponent } from './parent/parent.component';
+import { ChildComponent } from './child/child.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +19,11 @@ import { WordsComponent } from './words/words.component';
     BookComponent,
     UserComponent,
     StructComponent,
-    WordsComponent
+    WordsComponent,
+    PersonComponent,
+    ListpersonComponent,
+    ParentComponent,
+    ChildComponent
   ],
   imports: [
     BrowserModule,
