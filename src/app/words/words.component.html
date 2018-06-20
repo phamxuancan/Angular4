@@ -13,5 +13,5 @@
 <div *ngFor="let word of array_words" [ngStyle]="{'background-color':'gray','min-width':'100px'}" > 
   <h3 [ngStyle]="{color:word.memorized?'red':'green'}" >{{ word.en }}</h3>
   <p>{{ word.vi }}</p>
-  <button (click)="delete(word.id)">Xóa từ</button>
+  <button (click)="delete(word.id)">Xóa từ</button>s
 </div>
