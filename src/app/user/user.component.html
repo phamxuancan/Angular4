@@ -1,0 +1,12 @@
+<input placeholder="enter username" [(ngModel)]="name" #textvalue >
+<h3> your name is : {{ name }} </h3>
+<small [style.color]="name.length %2 ===0 ?'red':'black'">{{ textvalue.value }}</small>
+<div [class]="isSquare?'square':'circle'">
+
+</div>
+<div [class.square]="isSquare"  [class.circle]="!isSquare" >
+
+</div>
+
+<!-- //ngStyle  -->
+<span [ngStyle]="name.length % 2 == 0 ? evenStyle : oddStyle">{{name}}</span>
