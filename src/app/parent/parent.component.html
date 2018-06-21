@@ -1,4 +1,4 @@
 <p>
-  {{value}}
+  <button (click)="child1.value2 = child1.value2 + 1">Add</button>
 </p>
-<app-child></app-child>
+<app-child #child1></app-child>

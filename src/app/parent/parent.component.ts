@@ -12,4 +12,12 @@ export class ParentComponent implements OnInit {
   ngOnInit() {
   }
   value = 0;
+  changeValue(isAdd){
+    if(isAdd){
+      this.value = this.value + 1;
+    }else{
+      this.value = this.value - 1;
+    }
+    
+  }
 }

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'
+import { HttpModule } from '@angular/http'
 import { AppComponent } from './app.component';
 import { WordComponent } from './word.component';
 import { BookComponent } from './book/book.component';
@@ -11,6 +12,9 @@ import { PersonComponent } from './person/person.component';
 import { ListpersonComponent } from './listperson/listperson.component';
 import { ParentComponent } from './parent/parent.component';
 import { ChildComponent } from './child/child.component';
+import { CardComponent } from './card/card.component';
+import { PipesComponent } from './pipes/pipes.component';
+import { IpComponent } from './ip/ip.component';
 
 @NgModule({
   declarations: [
@@ -23,11 +27,15 @@ import { ChildComponent } from './child/child.component';
     PersonComponent,
     ListpersonComponent,
     ParentComponent,
-    ChildComponent
+    ChildComponent,
+    CardComponent,
+    PipesComponent,
+    IpComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]
