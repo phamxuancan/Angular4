@@ -5,13 +5,14 @@
       <form (submit)="onSubmit(formSignIn);" #formSignIn="ngForm">
         <div class="form-group">
           <label class="text_lable" for="email">Email address:</label>
-          <input type="email" class="form-control" id="email" ngModel #txt_email="ngModel"  name="email" required>
-          <p *ngIf="txt_email.errors?.required" class="error-text">Email không được để trống</p>
+          <input type="email" class="form-control" id="email" ngModel #txt_email="ngModel"  name="email" required email>
+          <p *ngIf="txt_email.touched && txt_email.errors?.required" class="error-text">Email không được để trống</p>
+          <p *ngIf="txt_email.touched && txt_email.errors?.email" class="error-text">Email không hop le</p>
         </div>
         <div class="form-group">
           <label class="text_lable" for="pwd">Password:</label>
           <input type="password" class="form-control" id="pwd" ngModel #txtpass="ngModel" name="password" required>
-          <p *ngIf="txtpass.errors?.required" class="error-text">Password không được để trống</p>
+          <p *ngIf="txtpass.touched && txtpass.errors?.required" class="error-text">Password không được để trống</p>
         </div>
         <button [disabled]="formSignIn.invalid" class="btn btn-default">Submit</button>
     </form>
