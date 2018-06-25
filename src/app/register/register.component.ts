@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Http} from '@angular/http';
+import {Http, Jsonp} from '@angular/http';
 import { CookieService } from 'ngx-cookie-service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -9,18 +10,29 @@ import { CookieService } from 'ngx-cookie-service';
   providers:[CookieService]
 })
 export class RegisterComponent implements OnInit {
-isLogin  = this.cookieService.get('isLogin');
-  constructor(private http:Http,private cookieService:CookieService) { }
+isLogin  = localStorage.getItem('isLogin');
+isLogind  = false;
+info = '';
+
+  constructor(private http:Http,private cookieService:CookieService,private router:Router) { }
 
   ngOnInit() {
+   var user  = localStorage.getItem('user');
+   if(user != null){
+     this.info = JSON.parse(user);
+     this.router.navigate(['/info'])
+   }
   }
   submitRegister(formRegister){
-    this.http.get('http://localhost/chatbot/test').
+    this.http.get('http://localhost/blog/register').
     toPromise()
     .then(res=>res.json()).then(response => 
       {
         this.isLogin = 'login';
-        this.cookieService.set( 'isLogin', 'login' );
+        localStorage.setItem( 'isLogin', this.isLogin  );
+        this.isLogind  = true;        
+        localStorage.setItem('user', JSON.stringify(response));
+        this.router.navigate(['/info'])
       }
     )
   }

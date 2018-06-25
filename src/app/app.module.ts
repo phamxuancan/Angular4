@@ -6,6 +6,8 @@ import { Routes,RouterModule } from '@angular/router'
 const routersConfig: Routes =[
   {path: 'login',component:LoginComponent},
   {path: 'register',component:RegisterComponent},
+  {path: 'info',component:InfoComponent},
+  {path: 'logout',component:LogoutComponent},
 
 ] 
 import { AppComponent } from './app.component';
@@ -23,6 +25,9 @@ import { PipesComponent } from './pipes/pipes.component';
 import { IpComponent } from './ip/ip.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { InfoComponent } from './info/info.component';
+import { LogoutComponent } from './logout/logout.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +45,10 @@ import { RegisterComponent } from './register/register.component';
     PipesComponent,
     IpComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    InfoComponent,
+    LogoutComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

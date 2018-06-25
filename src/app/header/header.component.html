@@ -1,0 +1,7 @@
+<div class="header" *ngIf="!isLogin">
+    <a routerLink="/login" class="link_type">Login</a>
+    <a routerLink="/register" class="link_type">Register</a>   
+</div>
+<div class="header" *ngIf="isLogin">
+    <a routerLink="/logout" class="link_type">Logout</a> 
+</div>
