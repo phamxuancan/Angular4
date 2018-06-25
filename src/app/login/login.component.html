@@ -3,6 +3,7 @@
 <div id="container">
  <h3 class="text_lable title_login">LogIn</h3>
     <div id="form-login">
+      <p class="error-text"> {{ messageError }}</p>
       <form (submit)="onSubmit(formSignIn);" #formSignIn="ngForm">
         <div class="form-group">
           <label class="text_lable" for="email">Email address:</label>

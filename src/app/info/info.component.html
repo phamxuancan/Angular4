@@ -3,6 +3,18 @@
   <h3 class="text_lable title_login">Chào mừng bạn {{ info.username }} đến với Angular</h3>
      <div id="form-login">
        <h4>Danh sách user</h4>
+       <table class="table table-hover"> 
+         <tr>
+           <th>Id</th>
+            <th>Email</th>
+            <th>Created</th>
+         </tr>
+         <tr *ngFor="let user of listUsers">
+            <td>{{ user.id }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.created_at }}</td>
+         </tr>
+       </table>
     </div>
  </div>
     

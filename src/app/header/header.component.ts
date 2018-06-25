@@ -14,6 +14,7 @@ user = '';
     this.user = localStorage.getItem('user');
     if(this.user != null){
       this.isLogin = true;
+      this.user = JSON.parse(this.user);
     }
   }
 

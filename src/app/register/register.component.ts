@@ -10,29 +10,32 @@ import {Router} from '@angular/router';
   providers:[CookieService]
 })
 export class RegisterComponent implements OnInit {
-isLogin  = localStorage.getItem('isLogin');
-isLogind  = false;
+isLogin  = false;
 info = '';
-
+messageError = '';
   constructor(private http:Http,private cookieService:CookieService,private router:Router) { }
 
   ngOnInit() {
    var user  = localStorage.getItem('user');
    if(user != null){
      this.info = JSON.parse(user);
-     this.router.navigate(['/info'])
+     this.router.navigate(['/info']);
+     this.isLogin = true;
    }
   }
   submitRegister(formRegister){
-    this.http.get('http://localhost/blog/register').
+    var value = formRegister.value;
+    this.http.post('http://localhost/blog/register',value).
     toPromise()
     .then(res=>res.json()).then(response => 
       {
-        this.isLogin = 'login';
-        localStorage.setItem( 'isLogin', this.isLogin  );
-        this.isLogind  = true;        
-        localStorage.setItem('user', JSON.stringify(response));
-        this.router.navigate(['/info'])
+        if(response.code == 1){
+          this.isLogin  = true;        
+          localStorage.setItem('user', JSON.stringify(response));
+          this.router.navigate(['/info'])
+        }else{
+          this.messageError = response.message;
+        }
       }
     )
   }

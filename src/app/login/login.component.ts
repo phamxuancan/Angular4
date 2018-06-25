@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // import { CookieService } from 'ngx-cookie-service';
 import {Router} from '@angular/router';
+import {  Http } from '@angular/http';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,8 +11,9 @@ import {Router} from '@angular/router';
 export class LoginComponent implements OnInit {
   cookieValue = '';
   info = '';
+  messageError = '';
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,private http : Http) { }
 
   ngOnInit() {
     var user  = localStorage.getItem('user');
@@ -21,8 +23,19 @@ export class LoginComponent implements OnInit {
    }
   }
   onSubmit(formSignIn){
-    console.log(this.cookieValue);
-    
+    var value = formSignIn.value;
+    this.http.post('http://localhost/blog/login',value).
+    toPromise()
+    .then(res=>res.json()).then(response => 
+      {
+        if(response.code == 1){    
+          localStorage.setItem('user', JSON.stringify(response));
+          this.router.navigate(['/info'])
+        }else{
+          this.messageError = response.message;
+        }
+      }
+    )
   }
   
 }

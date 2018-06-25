@@ -1,9 +1,10 @@
 
 <app-header></app-header>
 <div id="container">
-    <h3 class="text_lable title_login">LogIn</h3>
+    <h3 class="text_lable title_login">Register</h3>
     <h3>{{ isLogin != false?info.username:'' }}</h3>
        <div id="form-login">
+          <p class="error-text">{{ messageError }}</p>
          <form (submit)="submitRegister(formRegister)" #formRegister="ngForm">
            <div class="form-group">
              <label class="text_lable" for="email">Email address:</label>
@@ -12,15 +13,15 @@
              <p *ngIf="txt_email.touched&&txt_email.errors?.email" class="error-text">Email không hop le</p>
            </div>
            <div class="form-group">
+             <label class="text_lable" for="email">Username:</label>
+             <input ngModel #txt_username="ngModel" class="form-control" name="username" id="username" required>
+             <p *ngIf="txt_username.touched&&txt_username.errors?.required" class="error-text">Username không được để trống</p>
+           </div>
+           <div class="form-group">
              <label class="text_lable" for="pwd">Password:</label>
              <input type="password" ngModel #txt_pwd="ngModel" class="form-control" name="pwd" id="pwd" required>
              <p *ngIf="txt_pwd.touched && txt_pwd.errors?.required" class="error-text">Password không được để trống</p>
            </div>
-           <div class="form-group">
-              <label class="text_lable" for="repwd">Re-Password:</label>
-              <input type="password" ngModel #txt_repwd="ngModel" class="form-control" name="repwd" id="repwd" required>
-              <p *ngIf="txt_repwd.touched && txt_repwd.errors?.required" class="error-text">Re-Password không được để trống</p>
-            </div>
            <button [disabled]="formRegister.invalid" class="btn btn-default">Submit</button>
        </form>
      </div>
