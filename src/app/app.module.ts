@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { HttpModule } from '@angular/http'
 import { Routes,RouterModule } from '@angular/router'
+
 const routersConfig: Routes =[
   {path: 'login',component:LoginComponent},
   {path: 'register',component:RegisterComponent},
@@ -28,6 +29,7 @@ import { RegisterComponent } from './register/register.component';
 import { InfoComponent } from './info/info.component';
 import { LogoutComponent } from './logout/logout.component';
 import { HeaderComponent } from './header/header.component';
+import { ReactiveComponent } from './reactive/reactive.component';
 
 @NgModule({
   declarations: [
@@ -48,12 +50,14 @@ import { HeaderComponent } from './header/header.component';
     RegisterComponent,
     InfoComponent,
     LogoutComponent,
-    HeaderComponent
+    HeaderComponent,
+    ReactiveComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routersConfig)
   ],
   providers: [],

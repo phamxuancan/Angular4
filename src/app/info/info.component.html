@@ -7,11 +7,13 @@
          <tr>
            <th>Id</th>
             <th>Email</th>
+            <th>Username</th>
             <th>Created</th>
          </tr>
          <tr *ngFor="let user of listUsers">
             <td>{{ user.id }}</td>
             <td>{{ user.email }}</td>
+            <td>{{ user.username }}</td>
             <td>{{ user.created_at }}</td>
          </tr>
        </table>
